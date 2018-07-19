@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Emoji usage in text messages</title>
+    <!-- Use echarts.js -->
+    <script src="echarts.min.js"></script>
+    <script src="world.js"></script>
+</head>
+
+<body>
+    <h1>Emoji usage in text messages</h1>
+
+    <!-- Prepare the DOM element to be held by eCharts -->
+    <div id="mychart" style="width: 600px;height:400px;"></div>
+
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('mychart'));
+
+        option = {
+            title: {
+                text: 'Emoji usage in text messages',
+                left: 'center'
+            },
+            tooltip: {
+                // trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['Data on Area', 'Data on Scatter']
+            },
+            visualMap: {
+                min: 1,
+                max: 20,
+                left: 'left',
+                top: 'bottom',
+                text: ['High', 'Low'],
+                calculable: true
+            },
+            series: [{
+                name: 'Data on Area',
+                type: 'map',
+                map: 'world',
+                roam: false,
+                label: {
+                    normal: {
+                        // Modify to "true" to show the data
+                        show: false
+                    },
+                    emphasis: {
+                        show: false
+                    }
+                },
+                data: [{
+                    name: 'Brazil',
+                    value: 5.1
+                }, {
+                    name: 'United States',
+                    value: 9.2
+                }, {
+                    name: 'Mexico',
+                    value: 7.9
+                }, {
+                    name: 'France',
+                    value: 19.8
+                }, {
+                    name: 'Spain',
+                    value: 3.4
+                }, {
+                    name: 'Turkey',
+                    value: 5.8
+                }, {
+                    name: 'Argentina',
+                    value: 3.1
+                }, {
+                    name: 'Indonesia',
+                    value: 3.2
+                }, {
+                    name: 'Russia',
+                    value: 10.9
+                }, {
+                    name: 'Colombia',
+                    value: 3.7
+                }]
+            }]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>
