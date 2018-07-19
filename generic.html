@@ -12,6 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <meta charset="utf-8">
+    <title>Emoji usage in text messages</title>
+    <!-- Use echarts.js -->
+    <script src="echarts.min.js"></script>
+    <script src="world.js"></script>
 </head>
 
 
@@ -78,7 +83,86 @@
 								<img src="images/shijiepinci.png">
 								<p>In this subsection we investigate the popularity of emojis on a per-country basis. We quantify the emoji popularity in a specific country by calculating the percentage of geo-encoded tweets that contain emojis. By calculating the percentage of the tweets containing emojis, and not the overall amount of the emojis produced on Twitter, we neutralize the differences in popularity of Twitter among different countries.</p>
 								<p>以十个不同类型的国家为例，他们常用的表情包前十位也存在很多差距。</p>
-								<img src="images/shiguo.png">
+                                <img src="images/shiguo.png">
+                                
+                                 <!-- Prepare the DOM element to be held by eCharts -->
+    <div id="mychart" style="width: 600px;height:400px;"></div>
+
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('mychart'));
+
+        option = {
+            title: {
+                text: 'Emoji usage in text messages',
+                left: 'center'
+            },
+            tooltip: {
+                // trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['Data on Area', 'Data on Scatter']
+            },
+            visualMap: {
+                min: 1,
+                max: 20,
+                left: 'left',
+                top: 'bottom',
+                text: ['High', 'Low'],
+                calculable: true
+            },
+            series: [{
+                name: 'Data on Area',
+                type: 'map',
+                map: 'world',
+                roam: false,
+                label: {
+                    normal: {
+                        // Modify to "true" to show the data
+                        show: false
+                    },
+                    emphasis: {
+                        show: false
+                    }
+                },
+                data: [{
+                    name: 'Brazil',
+                    value: 5.1
+                }, {
+                    name: 'United States',
+                    value: 9.2
+                }, {
+                    name: 'Mexico',
+                    value: 7.9
+                }, {
+                    name: 'France',
+                    value: 19.8
+                }, {
+                    name: 'Spain',
+                    value: 3.4
+                }, {
+                    name: 'Turkey',
+                    value: 5.8
+                }, {
+                    name: 'Argentina',
+                    value: 3.1
+                }, {
+                    name: 'Indonesia',
+                    value: 3.2
+                }, {
+                    name: 'Russia',
+                    value: 10.9
+                }, {
+                    name: 'Colombia',
+                    value: 3.7
+                }]
+            }]
+        };
+        myChart.setOption(option);
+    </script>
+
+
 								<p>这只是各国使用热度最高的表情包的区别。事实上，在更多常用emoji表情中，很多国家甚至颠覆了人们的传统认知。</p>
 								<p>调查显示，加拿大人最爱传送关于枪支暴力和金钱的表情符号，这些本来都被认为是美国人最热爱的东西却在表情符号的世界里被加拿大人统统抢了过去。另外，他们也是最爱发“poop” 这个表情的英语语系国家。</p>
 								<img src="images/jianada.png">
